@@ -6,10 +6,10 @@ namespace Store.Persistence.Repositories
     {
         private readonly StoreDbContext _context;
 
-        private IProductRepository _productRepository;
-        private ICategoryRepository _categoryRepository;
+        //private IProductRepository _productRepository;
+        //private ICategoryRepository _categoryRepository;
         private IFeaturesRepository _featuresRepository;
-        private IProductFeaturesRepository _productFeaturesRepository;
+        //private IProductFeaturesRepository _productFeaturesRepository;
 
 
         public UnitOfWork(StoreDbContext context)
@@ -17,13 +17,13 @@ namespace Store.Persistence.Repositories
             this._context = context;
         }
 
-        public IProductRepository ProductRepository => _productRepository ??= new ProductRepository(_context);
+        //public IProductRepository ProductRepository => _productRepository ??= new ProductRepository(_context);
 
-        public ICategoryRepository CategoryRepository => _categoryRepository ??= new CategoryRepository(_context);
+        //public ICategoryRepository CategoryRepository => _categoryRepository ??= new CategoryRepository(_context);
 
         public IFeaturesRepository FeaturesRepository => _featuresRepository ??= new FeaturesRepository(_context);
 
-        public IProductFeaturesRepository ProductFeaturesRepository => _productFeaturesRepository ??= new ProductFeaturesRepository(_context);
+        //public IProductFeaturesRepository ProductFeaturesRepository => _productFeaturesRepository ??= new ProductFeaturesRepository(_context);
 
         public void Dispose()
         {

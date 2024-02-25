@@ -1,13 +1,20 @@
-﻿namespace Store.Domain
+﻿using Store.Domain.Common;
+
+namespace Store.Domain
 {
-    public class Feature
+    public class Feature : BaseDomainEntity
     {
         public string Name { get; set; }
 
-        public Object Value { get; set; }
+        public string Value { get; set; }
 
-        public int CategoryId { get; set; }
+        public FeatureValueType Type { get; set; }
+    }
 
-        public Category Category { get; set; }
+    public enum FeatureValueType
+    {
+        Number=1,
+        Boolean=2,
+        String=3,
     }
 }

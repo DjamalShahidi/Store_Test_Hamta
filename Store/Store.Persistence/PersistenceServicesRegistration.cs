@@ -11,11 +11,11 @@ namespace Store.Persistence
         public static IServiceCollection ConfigurePersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<StoreDbContext>(options =>
-                  options.UseSqlServer(configuration.GetConnectionString("DemoConnectionString")));
+                  options.UseSqlServer(configuration.GetConnectionString("StoreConnectionString")));
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IFeaturesRepository, FeaturesRepository>();
             return services;
         }
     }

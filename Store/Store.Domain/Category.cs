@@ -8,7 +8,7 @@ namespace Store.Domain
 
         public List<Product> Products { get; set; }
 
-        public List<Feature> Features { get; set; }
+        public List<CategoryFeature> CategoryFeatures { get; set; }
 
     }
 }

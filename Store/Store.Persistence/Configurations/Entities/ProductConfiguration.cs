@@ -9,11 +9,10 @@ using System.Threading.Tasks;
 
 namespace Store.Persistence.Configurations.Entities
 {
-    public class ProductConfiguration : IEntityTypeConfiguration<Product>
+    public class FeatureConfiguration : IEntityTypeConfiguration<Feature>
     {
-        public void Configure(EntityTypeBuilder<Product> builder)
+        public void Configure(EntityTypeBuilder<Feature> builder)
         {
-            throw new NotImplementedException();
         }
     }
 }
