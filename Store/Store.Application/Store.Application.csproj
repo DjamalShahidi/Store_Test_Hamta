@@ -15,9 +15,4 @@
     <ProjectReference Include="..\Store.Domain\Store.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Mediatr\Feature\Handlers\Queries\" />
-    <Folder Include="Mediatr\Feature\Requests\Queries\" />
-  </ItemGroup>
-
 </Project>

@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Store.Application.Mediatr.Feature.Requests.Commands;
+using Store.Application.Mediatr.Feature.Requests.Queries;
+using Store.Application.Responses;
 
 namespace Store.Api.Controllers
 {
@@ -15,10 +17,16 @@ namespace Store.Api.Controllers
             this._mediator = mediator;
         }
 
-        [HttpPost]
-        public async Task AddBook([FromBody] AddFeature addFeature)
+        [HttpPost, Route("/Feature")]
+        public async Task<Response> AddFeature([FromBody] AddFeature addFeature)
         {
-            await _mediator.Send(addFeature);
+           return await _mediator.Send(addFeature);
+        }
+
+        [HttpGet,Route("/Features")]
+        public async Task<Response> Get()
+        {
+           return await _mediator.Send(new GetFeatures());
         }
     }
 }

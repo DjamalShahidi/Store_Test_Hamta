@@ -1,9 +1,10 @@
 ﻿using MediatR;
 using Store.Application.DTOs.Feature;
+using Store.Application.Responses;
 
 namespace Store.Application.Mediatr.Feature.Requests.Commands
 {
-    public class AddFeature : IRequest<int>
+    public class AddFeature : IRequest<Response>
     {
         public AddFeatureDto AddFeatureDto { get; set; }
     }

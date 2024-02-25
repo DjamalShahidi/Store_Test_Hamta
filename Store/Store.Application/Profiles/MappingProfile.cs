@@ -9,7 +9,7 @@ namespace Store.Application.Profiles
         public MappingProfile()
         {
             CreateMap<AddFeatureDto, Feature>().ForMember(dest => dest.Type, opt => opt.MapFrom(src => MapValueType(src.Value))).ReverseMap();
-
+            CreateMap<GetFeatureDto, Feature>().ReverseMap();
 
         }
 

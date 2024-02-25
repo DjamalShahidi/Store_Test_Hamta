@@ -20,5 +20,10 @@ namespace Store.Persistence.Repositories
             await _context.AddAsync(entity);
             return entity;
         }
+
+        public async Task<List<T>> GetListAsync()
+        {
+            return await _context.Set<T>().ToListAsync();
+        }
     }
 }

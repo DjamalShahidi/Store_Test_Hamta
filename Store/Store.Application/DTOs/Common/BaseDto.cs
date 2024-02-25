@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Store.Application.DTOs.Common
+﻿namespace Store.Application.DTOs.Common
 {
-    public class BaseDto
+    public record BaseDto
     {
+        public int Id { get; set; }
     }
 }

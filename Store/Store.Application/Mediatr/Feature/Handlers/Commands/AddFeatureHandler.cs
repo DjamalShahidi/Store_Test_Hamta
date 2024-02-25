@@ -4,11 +4,12 @@ using Store.Application.Contracts.Persistence;
 using Store.Application.DTOs.Feature;
 using Store.Application.DTOs.Feature.Validators;
 using Store.Application.Mediatr.Feature.Requests.Commands;
+using Store.Application.Responses;
 using Store.Domain;
 
 namespace Store.Application.Mediatr.Feature.Handlers.Commands
 {
-    public class AddFeatureHandler : IRequestHandler<AddFeature, int>
+    public class AddFeatureHandler : IRequestHandler<AddFeature, Response>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -19,7 +20,7 @@ namespace Store.Application.Mediatr.Feature.Handlers.Commands
             this._mapper = mapper;
         }
 
-        public async Task<int> Handle(AddFeature request, CancellationToken cancellationToken)
+        public async Task<Response> Handle(AddFeature request, CancellationToken cancellationToken)
         {
             var validator = new AddFeatureDtoValidator();
             var validatorResult = await validator.ValidateAsync(request.AddFeatureDto);
@@ -31,14 +32,11 @@ namespace Store.Application.Mediatr.Feature.Handlers.Commands
 
             var feature = _mapper.Map<Domain.Feature>(request.AddFeatureDto);
 
-            //throw new NotFoundException(nameof(Book),id);
-
-
             feature = await _unitOfWork.FeaturesRepository.AddAsync(feature);
 
             await _unitOfWork.Save(cancellationToken);
 
-            return feature.Id;
+            return new Response(feature.Id);
         }
     }
 }
