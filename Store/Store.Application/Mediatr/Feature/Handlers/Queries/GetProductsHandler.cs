@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Store.Application.Mediatr.Feature.Handlers.Queries
 {
-    public class GetCategoriesHandler
+    internal class GetProductsHandler
     {
     }
 }

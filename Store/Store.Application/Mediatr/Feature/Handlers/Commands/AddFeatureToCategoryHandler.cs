@@ -31,7 +31,7 @@ namespace Store.Application.Mediatr.Feature.Handlers.Commands
 
             if (validatorResult.IsValid == false)
             {
-                return new Response(validatorResult.Errors.SelectMany(a => a.ErrorMessage));
+                return new Response(validatorResult.Errors.Select(a => a.ErrorMessage));
             }
 
             var categoryId = request.AddFeatureToCategoryDto.CategoryId;

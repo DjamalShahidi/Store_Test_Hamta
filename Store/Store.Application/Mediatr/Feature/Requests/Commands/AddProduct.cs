@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Store.Application.Mediatr.Feature.Handlers.Queries
+namespace Store.Application.Mediatr.Feature.Requests.Commands
 {
-    public class GetCategoriesHandler
+    internal class AddProduct
     {
     }
 }
