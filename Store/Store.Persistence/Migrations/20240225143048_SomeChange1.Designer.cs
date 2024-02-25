@@ -12,8 +12,8 @@ using Store.Persistence;
 namespace Store.Persistence.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    [Migration("20240225104118_Init")]
-    partial class Init
+    [Migration("20240225143048_SomeChange1")]
+    partial class SomeChange1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -98,6 +98,9 @@ namespace Store.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
@@ -110,52 +113,41 @@ namespace Store.Persistence.Migrations
                     b.Property<string>("ImgUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<int>("ProductCategoryId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductCategoryId");
+                    b.HasIndex("CategoryId");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Store.Domain.ProductFeature", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<int>("FeatureId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("FeatureId")
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
+                    b.HasKey("ProductId", "FeatureId");
 
                     b.HasIndex("FeatureId");
 
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductFeature");
+                    b.ToTable("ProductFeatures");
                 });
 
             modelBuilder.Entity("Store.Domain.CategoryFeature", b =>
@@ -179,25 +171,25 @@ namespace Store.Persistence.Migrations
 
             modelBuilder.Entity("Store.Domain.Product", b =>
                 {
-                    b.HasOne("Store.Domain.Category", "ProductCategory")
+                    b.HasOne("Store.Domain.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("ProductCategoryId")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ProductCategory");
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("Store.Domain.ProductFeature", b =>
                 {
                     b.HasOne("Store.Domain.Feature", "Feature")
-                        .WithMany()
+                        .WithMany("ProductFeatures")
                         .HasForeignKey("FeatureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Store.Domain.Product", "Product")
-                        .WithMany("productFeatures")
+                        .WithMany("ProductFeatures")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -217,11 +209,13 @@ namespace Store.Persistence.Migrations
             modelBuilder.Entity("Store.Domain.Feature", b =>
                 {
                     b.Navigation("CategoryFeatures");
+
+                    b.Navigation("ProductFeatures");
                 });
 
             modelBuilder.Entity("Store.Domain.Product", b =>
                 {
-                    b.Navigation("productFeatures");
+                    b.Navigation("ProductFeatures");
                 });
 #pragma warning restore 612, 618
         }

@@ -12,6 +12,9 @@ namespace Store.Domain
 
         public List<CategoryFeature> CategoryFeatures { get; set; }
 
+        public List<ProductFeature> ProductFeatures { get; set; }
+
+
     }
 
     public enum FeatureValueType

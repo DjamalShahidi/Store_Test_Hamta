@@ -11,7 +11,7 @@ namespace Store.Application.Mediatr.Feature.Requests.Commands
 {
     public class AddFeatureToCategory : IRequest<Response>
     {
-        public AddFeatureToCategoryDto AddFeatureToCategoryDto { get; set; }
+        public AddFeatureToCategoryDto Request { get; set; }
 
     }
 }

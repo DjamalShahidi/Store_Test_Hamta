@@ -29,14 +29,14 @@ namespace Store.Application.Mediatr.Feature.Handlers.Commands
         public async Task<Response> Handle(AddCategory request, CancellationToken cancellationToken)
         {
             var validator = new AddCategoryDtoValidator(_unitOfWork);
-            var validatorResult = await validator.ValidateAsync(request.AddCategoryDto);
+            var validatorResult = await validator.ValidateAsync(request.Request);
 
             if (validatorResult.IsValid == false)
             {
                 return new Response(validatorResult.Errors.Select(a => a.ErrorMessage));
             }
 
-            var category = _mapper.Map<Category>(request.AddCategoryDto);
+            var category = _mapper.Map<Category>(request.Request);
 
             category = await _unitOfWork.CategoryRepository.AddAsync(category);
 

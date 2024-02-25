@@ -12,7 +12,7 @@ namespace Store.Application.DTOs.Feature.Validators
             _unitOfWork = unitOfWork;
 
             RuleFor(a => a.Name)
-                .NotNull().NotEmpty().WithMessage("{PropertyName} must be send")
+                .NotNull().NotEmpty().WithMessage("Name must be send")
                 .MustAsync(async (name, token) =>
                  {
                      var isExist = await _unitOfWork.FeaturesRepository.IsExistWithName(name);
@@ -21,7 +21,7 @@ namespace Store.Application.DTOs.Feature.Validators
                  }).WithMessage("feature with this title is exist");
 
             RuleFor(a => a.Value)
-                .NotNull().NotEmpty().WithMessage("{PropertyName} must be send");
+                .NotNull().NotEmpty().WithMessage("Value must be send");
 
         }
     }

@@ -23,14 +23,14 @@ namespace Store.Application.Mediatr.Feature.Handlers.Commands
         public async Task<Response> Handle(AddFeature request, CancellationToken cancellationToken)
         {
             var validator = new AddFeatureDtoValidator(_unitOfWork);
-            var validatorResult = await validator.ValidateAsync(request.AddFeatureDto);
+            var validatorResult = await validator.ValidateAsync(request.Request);
 
             if (validatorResult.IsValid == false)
             {
                 return new Response(validatorResult.Errors.Select(a => a.ErrorMessage));
             }
 
-            var feature = _mapper.Map<Domain.Feature>(request.AddFeatureDto);
+            var feature = _mapper.Map<Domain.Feature>(request.Request);
 
             feature = await _unitOfWork.FeaturesRepository.AddAsync(feature);
 

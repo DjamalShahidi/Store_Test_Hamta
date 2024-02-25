@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Store.Application.Responses
+﻿namespace Store.Application.Responses
 {
     public class Response
     {
@@ -27,6 +20,7 @@ namespace Store.Application.Responses
             ErrorMessages = errors;
             Result = null;
         }
+
         public bool IsSuccess { get; set; } = true;
         public List<string> ErrorMessages { get; set; }
         public object Result { get; set; }

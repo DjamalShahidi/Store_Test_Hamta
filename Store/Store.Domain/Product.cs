@@ -10,15 +10,13 @@ namespace Store.Domain
 
         public string Description { get; set; }
 
-        public bool IsActive { get; set; }
-
         public string ImgUrl { get; set; }
 
-        public int ProductCategoryId { get; set; }
+        public int CategoryId { get; set; }
 
-        public Category ProductCategory { get; set; }
+        public Category Category { get; set; }
 
-        public List<ProductFeature> productFeatures { get; set; }
+        public List<ProductFeature> ProductFeatures { get; set; }
 
     }
 

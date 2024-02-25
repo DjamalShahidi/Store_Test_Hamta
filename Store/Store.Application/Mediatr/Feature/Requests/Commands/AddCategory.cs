@@ -6,6 +6,6 @@ namespace Store.Application.Mediatr.Feature.Requests.Commands
 {
     public class AddCategory : IRequest<Response>
     {
-        public AddCategoryDto AddCategoryDto { get; set; }
+        public AddCategoryDto Request { get; set; }
     }
 }

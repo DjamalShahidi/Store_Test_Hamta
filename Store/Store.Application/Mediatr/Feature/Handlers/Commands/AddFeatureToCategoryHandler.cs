@@ -27,18 +27,18 @@ namespace Store.Application.Mediatr.Feature.Handlers.Commands
         public async Task<Response> Handle(AddFeatureToCategory request, CancellationToken cancellationToken)
         {
             var validator = new AddFeatureToCategoryDtoValidator(_unitOfWork);
-            var validatorResult = await validator.ValidateAsync(request.AddFeatureToCategoryDto);
+            var validatorResult = await validator.ValidateAsync(request.Request);
 
             if (validatorResult.IsValid == false)
             {
                 return new Response(validatorResult.Errors.Select(a => a.ErrorMessage));
             }
 
-            var categoryId = request.AddFeatureToCategoryDto.CategoryId;
+            var categoryId = request.Request.CategoryId;
 
             var categoryFeatureis = new List<CategoryFeature>();
 
-            foreach (var id in request.AddFeatureToCategoryDto.FeatureIds) {
+            foreach (var id in request.Request.FeatureIds) {
                 categoryFeatureis.Add(new CategoryFeature()
                 {
                     CategoryId = categoryId,
@@ -50,7 +50,7 @@ namespace Store.Application.Mediatr.Feature.Handlers.Commands
 
             await _unitOfWork.Save(cancellationToken);
 
-            return new Response(null);
+            return new Response();
         }
 
     }

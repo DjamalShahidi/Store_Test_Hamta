@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using Store.Application.DTOs.Product;
+using Store.Application.Responses;
 
 namespace Store.Application.Mediatr.Feature.Requests.Commands
 {
-    internal class AddProduct
+    public class AddProduct : IRequest<Response>
     {
+        public AddProductDto Request { get; set; }
     }
 }

@@ -6,6 +6,6 @@ namespace Store.Application.Mediatr.Feature.Requests.Commands
 {
     public class AddFeature : IRequest<Response>
     {
-        public AddFeatureDto AddFeatureDto { get; set; }
+        public AddFeatureDto Request { get; set; }
     }
 }

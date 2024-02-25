@@ -1,4 +1,6 @@
-﻿namespace Store.Application.Contracts.Persistence
+﻿using Microsoft.EntityFrameworkCore.Storage;
+
+namespace Store.Application.Contracts.Persistence
 {
     public interface IUnitOfWork : IDisposable
     {
@@ -8,13 +10,12 @@
 
         ICategoryFeatureRepository CategoryFeatureRepository { get; }
 
+        IProductFeatureRepository ProductFeatureRepository { get; }
 
-        //IProductFeaturesRepository ProductFeaturesRepository { get; }
-
-        //IProductRepository ProductRepository { get; }
+        IProductRepository ProductRepository { get; }
 
         Task Save(CancellationToken cancellationToken);
 
-      
+        Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default);
     }
 }

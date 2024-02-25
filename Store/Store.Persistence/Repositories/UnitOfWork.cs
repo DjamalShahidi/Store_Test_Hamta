@@ -1,4 +1,5 @@
-﻿using Store.Application.Contracts.Persistence;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using Store.Application.Contracts.Persistence;
 
 namespace Store.Persistence.Repositories
 {
@@ -6,12 +7,11 @@ namespace Store.Persistence.Repositories
     {
         private readonly StoreDbContext _context;
 
-        //private IProductRepository _productRepository;
+        private IProductRepository _productRepository;
         private ICategoryRepository _categoryRepository;
         private IFeaturesRepository _featuresRepository;
         private ICategoryFeatureRepository _categoryFeatureRepository;
-
-        //private IProductFeaturesRepository _productFeaturesRepository;
+        private IProductFeatureRepository _productFeatureRepository;
 
 
         public UnitOfWork(StoreDbContext context)
@@ -19,7 +19,7 @@ namespace Store.Persistence.Repositories
             this._context = context;
         }
 
-        //public IProductRepository ProductRepository => _productRepository ??= new ProductRepository(_context);
+        public IProductRepository ProductRepository => _productRepository ??= new ProductRepository(_context);
 
         public ICategoryRepository CategoryRepository => _categoryRepository ??= new CategoryRepository(_context);
 
@@ -27,7 +27,8 @@ namespace Store.Persistence.Repositories
 
         public ICategoryFeatureRepository CategoryFeatureRepository => _categoryFeatureRepository ??= new CategoryFeatureRepository(_context);
 
-        //public IProductFeaturesRepository ProductFeaturesRepository => _productFeaturesRepository ??= new ProductFeaturesRepository(_context);
+        public IProductFeatureRepository ProductFeatureRepository => _productFeatureRepository ??= new ProductFeaturesRepository(_context);
+
 
         public void Dispose()
         {
@@ -38,6 +39,11 @@ namespace Store.Persistence.Repositories
         public async Task Save(CancellationToken cancellationToken = default)
         {
             await _context.SaveChangesAsync(cancellationToken);
+        }
+
+        public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
+        {
+            return await _context.Database.BeginTransactionAsync(cancellationToken);
         }
     }
 }

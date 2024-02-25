@@ -42,7 +42,7 @@ namespace Store.Application.DTOs.Category.Validators
                    }
                }
 
-               return true; // All ids exist
+               return true; 
            }).WithMessage("One or more feature ids do not exist");
         }
     }

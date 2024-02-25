@@ -44,7 +44,7 @@ namespace Store.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Product",
+                name: "Products",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -52,7 +52,6 @@ namespace Store.Persistence.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProductCategoryId = table.Column<int>(type: "int", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -60,9 +59,9 @@ namespace Store.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Product", x => x.Id);
+                    table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Product_Categories_ProductCategoryId",
+                        name: "FK_Products_Categories_ProductCategoryId",
                         column: x => x.ProductCategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
@@ -94,29 +93,28 @@ namespace Store.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductFeature",
+                name: "ProductFeatures",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     FeatureId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductFeature", x => x.Id);
+                    table.PrimaryKey("PK_ProductFeatures", x => new { x.ProductId, x.FeatureId });
                     table.ForeignKey(
-                        name: "FK_ProductFeature_Features_FeatureId",
+                        name: "FK_ProductFeatures_Features_FeatureId",
                         column: x => x.FeatureId,
                         principalTable: "Features",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductFeature_Product_ProductId",
+                        name: "FK_ProductFeatures_Products_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "Product",
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -127,19 +125,14 @@ namespace Store.Persistence.Migrations
                 column: "FeatureId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Product_ProductCategoryId",
-                table: "Product",
-                column: "ProductCategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProductFeature_FeatureId",
-                table: "ProductFeature",
+                name: "IX_ProductFeatures_FeatureId",
+                table: "ProductFeatures",
                 column: "FeatureId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductFeature_ProductId",
-                table: "ProductFeature",
-                column: "ProductId");
+                name: "IX_Products_ProductCategoryId",
+                table: "Products",
+                column: "ProductCategoryId");
         }
 
         /// <inheritdoc />
@@ -149,13 +142,13 @@ namespace Store.Persistence.Migrations
                 name: "CategoryFeatures");
 
             migrationBuilder.DropTable(
-                name: "ProductFeature");
+                name: "ProductFeatures");
 
             migrationBuilder.DropTable(
                 name: "Features");
 
             migrationBuilder.DropTable(
-                name: "Product");
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Categories");
