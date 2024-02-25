@@ -9,6 +9,9 @@ namespace Store.Domain
         public string Value { get; set; }
 
         public FeatureValueType Type { get; set; }
+
+        public List<CategoryFeature> CategoryFeatures { get; set; }
+
     }
 
     public enum FeatureValueType

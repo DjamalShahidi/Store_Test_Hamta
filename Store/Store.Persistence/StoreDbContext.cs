@@ -32,6 +32,9 @@ namespace Store.Persistence
 
 
         public DbSet<Feature> Features { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<CategoryFeature> CategoryFeatures { get; set; }
+
 
     }
 

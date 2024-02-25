@@ -9,5 +9,7 @@ namespace Store.Application.Contracts.Persistence
 {
     public interface ICategoryRepository : IGenericRepository<Category>
     {
+        Task<bool> IsExistWithThisTitle(string Title);
+
     }
 }

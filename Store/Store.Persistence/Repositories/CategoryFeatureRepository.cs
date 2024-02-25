@@ -3,11 +3,11 @@ using Store.Domain;
 
 namespace Store.Persistence.Repositories
 {
-    public class ProductFeaturesRepository : GenericRepository<ProductFeature>, IProductFeatureRepository
+    public class CategoryFeatureRepository : GenericRepository<CategoryFeature>, ICategoryFeatureRepository
     {
         private readonly StoreDbContext _context;
 
-        public ProductFeaturesRepository(StoreDbContext context) : base(context)
+        public CategoryFeatureRepository(StoreDbContext context) : base(context)
         {
             this._context = context;
         }

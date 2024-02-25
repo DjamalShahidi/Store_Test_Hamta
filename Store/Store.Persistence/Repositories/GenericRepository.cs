@@ -21,9 +21,22 @@ namespace Store.Persistence.Repositories
             return entity;
         }
 
+        public async Task<List<T>> AddListAsync(List<T> entities)
+        {
+            await _context.AddRangeAsync(entities);
+            return entities;
+        }
+
         public async Task<List<T>> GetListAsync()
         {
             return await _context.Set<T>().ToListAsync();
+        }
+
+        public async Task<bool> IsExist(int id)
+        {
+            var enity= await _context.Set<T>().FindAsync(id);
+
+            return enity != null;   
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Store.Application.Contracts.Persistence;
+﻿using Microsoft.EntityFrameworkCore;
+using Store.Application.Contracts.Persistence;
 using Store.Domain;
 
 namespace Store.Persistence.Repositories
@@ -11,6 +12,11 @@ namespace Store.Persistence.Repositories
         public CategoryRepository(StoreDbContext context) : base(context)
         {
             this._context = context;
+        }
+
+        public async Task<bool> IsExistWithThisTitle(string title)
+        {
+            return await _context.Categories.AnyAsync(a => a.Title == title);
         }
     }
 }

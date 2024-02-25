@@ -7,8 +7,10 @@ namespace Store.Persistence.Repositories
         private readonly StoreDbContext _context;
 
         //private IProductRepository _productRepository;
-        //private ICategoryRepository _categoryRepository;
+        private ICategoryRepository _categoryRepository;
         private IFeaturesRepository _featuresRepository;
+        private ICategoryFeatureRepository _categoryFeatureRepository;
+
         //private IProductFeaturesRepository _productFeaturesRepository;
 
 
@@ -19,9 +21,11 @@ namespace Store.Persistence.Repositories
 
         //public IProductRepository ProductRepository => _productRepository ??= new ProductRepository(_context);
 
-        //public ICategoryRepository CategoryRepository => _categoryRepository ??= new CategoryRepository(_context);
+        public ICategoryRepository CategoryRepository => _categoryRepository ??= new CategoryRepository(_context);
 
         public IFeaturesRepository FeaturesRepository => _featuresRepository ??= new FeaturesRepository(_context);
+
+        public ICategoryFeatureRepository CategoryFeatureRepository => _categoryFeatureRepository ??= new CategoryFeatureRepository(_context);
 
         //public IProductFeaturesRepository ProductFeaturesRepository => _productFeaturesRepository ??= new ProductFeaturesRepository(_context);
 

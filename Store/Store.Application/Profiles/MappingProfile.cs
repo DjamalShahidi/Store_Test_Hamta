@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Store.Application.DTOs.Category;
 using Store.Application.DTOs.Feature;
 using Store.Domain;
 
@@ -10,6 +11,7 @@ namespace Store.Application.Profiles
         {
             CreateMap<AddFeatureDto, Feature>().ForMember(dest => dest.Type, opt => opt.MapFrom(src => MapValueType(src.Value))).ReverseMap();
             CreateMap<GetFeatureDto, Feature>().ReverseMap();
+            CreateMap<AddCategoryDto, Category>().ReverseMap();
 
         }
 

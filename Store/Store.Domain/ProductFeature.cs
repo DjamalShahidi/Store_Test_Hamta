@@ -8,7 +8,7 @@ namespace Store.Domain
 
         public Product Product { get; set; }
 
-        public int AttributeId { get; set; }
+        public int FeatureId { get; set; }
 
         public Feature Feature { get; set; }
     }
