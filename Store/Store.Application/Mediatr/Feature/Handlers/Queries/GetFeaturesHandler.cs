@@ -7,8 +7,6 @@ using Store.Application.Responses;
 
 namespace Store.Application.Mediatr.Feature.Handlers.Queries
 {
-
-
     public class GetFeaturesHandler : IRequestHandler<GetFeatures, Response>
     {
         private readonly IUnitOfWork _unitOfWork;

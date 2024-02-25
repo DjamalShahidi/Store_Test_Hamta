@@ -1,4 +1,5 @@
-﻿using Store.Application.Contracts.Persistence;
+﻿using Microsoft.EntityFrameworkCore;
+using Store.Application.Contracts.Persistence;
 using Store.Domain;
 
 namespace Store.Persistence.Repositories
@@ -10,6 +11,11 @@ namespace Store.Persistence.Repositories
         public CategoryFeatureRepository(StoreDbContext context) : base(context)
         {
             this._context = context;
+        }
+
+        public async Task<List<CategoryFeature>> GetListByCategoryIds(List<int> categoryIds)
+        {
+          return  await _context.CategoryFeatures.Where(a => categoryIds.Contains(a.CategoryId)).ToListAsync();
         }
     }
 }

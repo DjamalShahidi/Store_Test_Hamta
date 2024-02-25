@@ -15,6 +15,7 @@ namespace Store.Application.Profiles
             CreateMap<GetFeatureDto, Feature>().ReverseMap();
             CreateMap<AddCategoryDto, Category>().ReverseMap();
             CreateMap<AddProductDto, Product>().ReverseMap();
+            CreateMap<GetCategoryDto, Category>().ReverseMap();
 
 
         }

@@ -24,9 +24,9 @@ namespace Store.Api.Controllers
         }
 
         [HttpGet, Route("/Products")]
-        public async Task<Response> GetCategories()
+        public async Task<Response> GetCategories([FromQuery] GetProducts getProducts)
         {
-            return await _mediator.Send(new GetProducts());
+            return await _mediator.Send(getProducts);
         }
     }
 }

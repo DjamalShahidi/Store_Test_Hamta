@@ -6,5 +6,13 @@ namespace Store.Application.DTOs.Category
     {
         public string Title { get; set; }
 
+        public List<GetCategoryFeatureDto> Features { get; set; }=new List<GetCategoryFeatureDto>();
+    }
+
+    record class GetCategoryFeatureDto : BaseDto
+    {
+        public string Name { get; set; }
+
+        public object Value { get; set; }
     }
 }

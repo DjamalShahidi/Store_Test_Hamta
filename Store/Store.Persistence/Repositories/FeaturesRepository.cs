@@ -17,5 +17,10 @@ namespace Store.Persistence.Repositories
         {
             return await _context.Features.AnyAsync(a => a.Name == name);
         }
+
+        public async Task<List<Feature>> GetListByIdsAsync(List<int> ids)
+        {
+            return await _context.Features.Where(a => ids.Contains(a.Id)).ToListAsync();
+        }
     }
 }
