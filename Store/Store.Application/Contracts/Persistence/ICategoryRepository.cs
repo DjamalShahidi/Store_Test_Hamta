@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Store.Application.Contracts.Persistence
 {
-    internal interface ICategoryRepository : IGenericRepository<Category>
+    public interface ICategoryRepository : IGenericRepository<Category>
     {
     }
 }
