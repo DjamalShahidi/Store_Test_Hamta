@@ -1,6 +1,8 @@
-﻿namespace Store.Application.Contracts.Persistence
+﻿using Store.Domain;
+
+namespace Store.Application.Contracts.Persistence
 {
-    public interface IFeaturesRepository : IGenericRepository<Attribute>
+    public interface IFeaturesRepository : IGenericRepository<Feature>
     {
     }
 }
