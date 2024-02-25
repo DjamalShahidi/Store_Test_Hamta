@@ -7,6 +7,9 @@
         Task<List<T>> AddListAsync(List<T> entities);
 
         Task<List<T>> GetListAsync();
+
+        Task<T> GetAsync(int id);
+
         Task<bool> IsExist(int id);
 
     }

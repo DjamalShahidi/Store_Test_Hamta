@@ -1,4 +1,5 @@
-﻿using Store.Application.Contracts.Persistence;
+﻿using Microsoft.EntityFrameworkCore;
+using Store.Application.Contracts.Persistence;
 using Store.Domain;
 
 namespace Store.Persistence.Repositories
@@ -10,6 +11,11 @@ namespace Store.Persistence.Repositories
         public ProductFeaturesRepository(StoreDbContext context) : base(context)
         {
             this._context = context;
+        }
+
+        public async Task<List<ProductFeature>> GetListByProductIds(List<int> productIds)
+        {
+          return  await _context.ProductFeatures.Include(a=>a.Feature).Where(a => productIds.Contains(a.ProductId)).ToListAsync();
         }
     }
 }

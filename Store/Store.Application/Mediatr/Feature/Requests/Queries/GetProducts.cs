@@ -6,6 +6,6 @@ namespace Store.Application.Mediatr.Feature.Requests.Queries
 {
     public class GetProducts : IRequest<Response>
     {
-        public GetProductDto Request { get; set; }
+        public int? CategoryId { get; set; }
     }
 }

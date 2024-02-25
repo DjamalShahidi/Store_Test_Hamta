@@ -15,7 +15,7 @@ namespace Store.Persistence.Repositories
 
         public async Task<List<CategoryFeature>> GetListByCategoryIds(List<int> categoryIds)
         {
-          return  await _context.CategoryFeatures.Where(a => categoryIds.Contains(a.CategoryId)).ToListAsync();
+          return  await _context.CategoryFeatures.Include(a=>a.Feature).Where(a => categoryIds.Contains(a.CategoryId)).ToListAsync();
         }
     }
 }

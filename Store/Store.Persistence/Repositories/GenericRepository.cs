@@ -27,6 +27,11 @@ namespace Store.Persistence.Repositories
             return entities;
         }
 
+        public async Task<T> GetAsync(int id)
+        {
+            return await _context.Set<T>().FindAsync(id);
+        }
+
         public async Task<List<T>> GetListAsync()
         {
             return await _context.Set<T>().ToListAsync();
@@ -34,9 +39,9 @@ namespace Store.Persistence.Repositories
 
         public async Task<bool> IsExist(int id)
         {
-            var enity= await _context.Set<T>().FindAsync(id);
+            var enity=await GetAsync(id);
 
-            return enity != null;   
+            return enity != null;
         }
     }
 }

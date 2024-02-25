@@ -27,22 +27,19 @@ namespace Store.Application.Mediatr.Feature.Handlers.Queries
 
             var categoryFeatures = await _unitOfWork.CategoryFeatureRepository.GetListByCategoryIds(categoryIds);
 
-            var feautres= await _unitOfWork.FeaturesRepository.GetListByIdsAsync(categoryFeatures.Select(a=>a.FeatureId).ToList());
-
             var categoryDtos = _mapper.Map<List<GetCategoryDto>>(categories);
 
             foreach (var item in categoryDtos)
             {
-                var featuerIdsForThisCategory=categoryFeatures.Where(a=>a.CategoryId==item.Id).Select(a=>a.FeatureId).ToList();
-                var thisFeatuers = feautres.Where(a => featuerIdsForThisCategory.Contains(a.Id)).ToList();
+                var categoryFeaturesForThisCategory = categoryFeatures.Where(a=>a.CategoryId==item.Id).ToList();
 
-                foreach (var featuer in thisFeatuers)
+                foreach (var featuer in categoryFeaturesForThisCategory)
                 {
                     item.Features.Add(new GetCategoryFeatureDto()
                     {
-                        Id = featuer.Id,
-                        Name = featuer.Name,
-                        Value = featuer.Value,
+                        Id = featuer.Feature.Id,
+                        Name = featuer.Feature.Name,
+                        Value = featuer.Feature.Value,
                     });
                 }
 
