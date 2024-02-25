@@ -14,6 +14,20 @@ namespace Store.Persistence.Configurations.Entities
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
+            for (int i = 1; i <= 10; i++)
+            {
+                builder.HasData(
+                    new Category
+                    {
+                        Id = i,
+                        Title = $"Category {i}",
+                        CreateDate = DateTime.Now,
+                        IsDeleted = false
+                    }
+                );
+            }
         }
+
+        
     }
 }

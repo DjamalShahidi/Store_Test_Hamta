@@ -25,6 +25,17 @@ namespace Store.Persistence.Configurations.Entities
                 .HasOne(cf => cf.Feature)
                 .WithMany(f => f.ProductFeatures)
                 .HasForeignKey(cf => cf.FeatureId);
+
+            for (int i = 1; i <= 10; i++)
+            {
+                builder.HasData(
+                    new ProductFeature
+                    {
+                        ProductId = i,
+                        FeatureId = i
+                    }
+                    );
+            }
         }
 
     }

@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Store.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Store.Persistence.Configurations.Entities
 {
@@ -18,6 +13,23 @@ namespace Store.Persistence.Configurations.Entities
             builder.HasOne(p => p.Category)
                    .WithMany(c => c.Products)
                    .HasForeignKey(p => p.CategoryId);
+
+            for (int i = 1; i <= 10; i++)
+            {
+                builder.HasData(
+                    new Product
+                    {
+                        Id = i,
+                        Title = $"Product {i}",
+                        Code = $"P00{i}",
+                        Description = $"Description for Product {i}",
+                        ImgUrl = $"URL for Product {i} Image",
+                        CategoryId = i % 10 + 1, 
+                        CreateDate = DateTime.Now,
+                        IsDeleted = false
+                    }
+                );
+            }
         }
     }
 }

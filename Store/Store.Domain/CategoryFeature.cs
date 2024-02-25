@@ -1,4 +1,6 @@
-﻿namespace Store.Domain
+﻿using Store.Domain.Common;
+
+namespace Store.Domain
 {
     public class CategoryFeature
     {

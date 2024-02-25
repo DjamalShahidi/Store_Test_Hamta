@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Store.Persistence;
 
@@ -11,9 +12,11 @@ using Store.Persistence;
 namespace Store.Persistence.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    partial class StoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240225163043_SeedProductFeature")]
+    partial class SeedProductFeature
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,70 +50,70 @@ namespace Store.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 298, DateTimeKind.Local).AddTicks(942),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 859, DateTimeKind.Local).AddTicks(3616),
                             IsDeleted = false,
                             Title = "Category 1"
                         },
                         new
                         {
                             Id = 2,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 298, DateTimeKind.Local).AddTicks(1003),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 859, DateTimeKind.Local).AddTicks(3682),
                             IsDeleted = false,
                             Title = "Category 2"
                         },
                         new
                         {
                             Id = 3,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 298, DateTimeKind.Local).AddTicks(1011),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 859, DateTimeKind.Local).AddTicks(3692),
                             IsDeleted = false,
                             Title = "Category 3"
                         },
                         new
                         {
                             Id = 4,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 298, DateTimeKind.Local).AddTicks(1018),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 859, DateTimeKind.Local).AddTicks(3700),
                             IsDeleted = false,
                             Title = "Category 4"
                         },
                         new
                         {
                             Id = 5,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 298, DateTimeKind.Local).AddTicks(1026),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 859, DateTimeKind.Local).AddTicks(3708),
                             IsDeleted = false,
                             Title = "Category 5"
                         },
                         new
                         {
                             Id = 6,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 298, DateTimeKind.Local).AddTicks(1037),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 859, DateTimeKind.Local).AddTicks(3720),
                             IsDeleted = false,
                             Title = "Category 6"
                         },
                         new
                         {
                             Id = 7,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 298, DateTimeKind.Local).AddTicks(1044),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 859, DateTimeKind.Local).AddTicks(3727),
                             IsDeleted = false,
                             Title = "Category 7"
                         },
                         new
                         {
                             Id = 8,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 298, DateTimeKind.Local).AddTicks(1051),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 859, DateTimeKind.Local).AddTicks(3733),
                             IsDeleted = false,
                             Title = "Category 8"
                         },
                         new
                         {
                             Id = 9,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 298, DateTimeKind.Local).AddTicks(1059),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 859, DateTimeKind.Local).AddTicks(3739),
                             IsDeleted = false,
                             Title = "Category 9"
                         },
                         new
                         {
                             Id = 10,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 298, DateTimeKind.Local).AddTicks(1119),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 859, DateTimeKind.Local).AddTicks(3748),
                             IsDeleted = false,
                             Title = "Category 10"
                         });
@@ -129,58 +132,6 @@ namespace Store.Persistence.Migrations
                     b.HasIndex("FeatureId");
 
                     b.ToTable("CategoryFeatures");
-
-                    b.HasData(
-                        new
-                        {
-                            CategoryId = 1,
-                            FeatureId = 1
-                        },
-                        new
-                        {
-                            CategoryId = 2,
-                            FeatureId = 2
-                        },
-                        new
-                        {
-                            CategoryId = 3,
-                            FeatureId = 3
-                        },
-                        new
-                        {
-                            CategoryId = 4,
-                            FeatureId = 4
-                        },
-                        new
-                        {
-                            CategoryId = 5,
-                            FeatureId = 5
-                        },
-                        new
-                        {
-                            CategoryId = 6,
-                            FeatureId = 6
-                        },
-                        new
-                        {
-                            CategoryId = 7,
-                            FeatureId = 7
-                        },
-                        new
-                        {
-                            CategoryId = 8,
-                            FeatureId = 8
-                        },
-                        new
-                        {
-                            CategoryId = 9,
-                            FeatureId = 9
-                        },
-                        new
-                        {
-                            CategoryId = 10,
-                            FeatureId = 10
-                        });
                 });
 
             modelBuilder.Entity("Store.Domain.Feature", b =>
@@ -214,7 +165,7 @@ namespace Store.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(1480),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(3861),
                             IsDeleted = false,
                             Name = "Feature 1",
                             Type = 2,
@@ -223,7 +174,7 @@ namespace Store.Persistence.Migrations
                         new
                         {
                             Id = 2,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(1523),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(3908),
                             IsDeleted = false,
                             Name = "Feature 2",
                             Type = 3,
@@ -232,7 +183,7 @@ namespace Store.Persistence.Migrations
                         new
                         {
                             Id = 3,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(1598),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(3919),
                             IsDeleted = false,
                             Name = "Feature 3",
                             Type = 1,
@@ -241,7 +192,7 @@ namespace Store.Persistence.Migrations
                         new
                         {
                             Id = 4,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(1606),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(3926),
                             IsDeleted = false,
                             Name = "Feature 4",
                             Type = 2,
@@ -250,7 +201,7 @@ namespace Store.Persistence.Migrations
                         new
                         {
                             Id = 5,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(1614),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(3933),
                             IsDeleted = false,
                             Name = "Feature 5",
                             Type = 3,
@@ -259,7 +210,7 @@ namespace Store.Persistence.Migrations
                         new
                         {
                             Id = 6,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(1626),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(3943),
                             IsDeleted = false,
                             Name = "Feature 6",
                             Type = 1,
@@ -268,7 +219,7 @@ namespace Store.Persistence.Migrations
                         new
                         {
                             Id = 7,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(1633),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(3950),
                             IsDeleted = false,
                             Name = "Feature 7",
                             Type = 2,
@@ -277,7 +228,7 @@ namespace Store.Persistence.Migrations
                         new
                         {
                             Id = 8,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(1641),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(3957),
                             IsDeleted = false,
                             Name = "Feature 8",
                             Type = 3,
@@ -286,7 +237,7 @@ namespace Store.Persistence.Migrations
                         new
                         {
                             Id = 9,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(1649),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(3963),
                             IsDeleted = false,
                             Name = "Feature 9",
                             Type = 1,
@@ -295,7 +246,7 @@ namespace Store.Persistence.Migrations
                         new
                         {
                             Id = 10,
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(1658),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(3972),
                             IsDeleted = false,
                             Name = "Feature 10",
                             Type = 2,
@@ -344,7 +295,7 @@ namespace Store.Persistence.Migrations
                             Id = 1,
                             CategoryId = 2,
                             Code = "P001",
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(6246),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(8053),
                             Description = "Description for Product 1",
                             ImgUrl = "URL for Product 1 Image",
                             IsDeleted = false,
@@ -355,7 +306,7 @@ namespace Store.Persistence.Migrations
                             Id = 2,
                             CategoryId = 3,
                             Code = "P002",
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(6277),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(8086),
                             Description = "Description for Product 2",
                             ImgUrl = "URL for Product 2 Image",
                             IsDeleted = false,
@@ -366,7 +317,7 @@ namespace Store.Persistence.Migrations
                             Id = 3,
                             CategoryId = 4,
                             Code = "P003",
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(6288),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(8097),
                             Description = "Description for Product 3",
                             ImgUrl = "URL for Product 3 Image",
                             IsDeleted = false,
@@ -377,7 +328,7 @@ namespace Store.Persistence.Migrations
                             Id = 4,
                             CategoryId = 5,
                             Code = "P004",
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(6298),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(8164),
                             Description = "Description for Product 4",
                             ImgUrl = "URL for Product 4 Image",
                             IsDeleted = false,
@@ -388,7 +339,7 @@ namespace Store.Persistence.Migrations
                             Id = 5,
                             CategoryId = 6,
                             Code = "P005",
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(6307),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(8175),
                             Description = "Description for Product 5",
                             ImgUrl = "URL for Product 5 Image",
                             IsDeleted = false,
@@ -399,7 +350,7 @@ namespace Store.Persistence.Migrations
                             Id = 6,
                             CategoryId = 7,
                             Code = "P006",
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(6319),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(8186),
                             Description = "Description for Product 6",
                             ImgUrl = "URL for Product 6 Image",
                             IsDeleted = false,
@@ -410,7 +361,7 @@ namespace Store.Persistence.Migrations
                             Id = 7,
                             CategoryId = 8,
                             Code = "P007",
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(6330),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(8195),
                             Description = "Description for Product 7",
                             ImgUrl = "URL for Product 7 Image",
                             IsDeleted = false,
@@ -421,7 +372,7 @@ namespace Store.Persistence.Migrations
                             Id = 8,
                             CategoryId = 9,
                             Code = "P008",
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(6338),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(8203),
                             Description = "Description for Product 8",
                             ImgUrl = "URL for Product 8 Image",
                             IsDeleted = false,
@@ -432,7 +383,7 @@ namespace Store.Persistence.Migrations
                             Id = 9,
                             CategoryId = 10,
                             Code = "P009",
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(6347),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(8211),
                             Description = "Description for Product 9",
                             ImgUrl = "URL for Product 9 Image",
                             IsDeleted = false,
@@ -443,7 +394,7 @@ namespace Store.Persistence.Migrations
                             Id = 10,
                             CategoryId = 1,
                             Code = "P0010",
-                            CreateDate = new DateTime(2024, 2, 25, 20, 3, 9, 299, DateTimeKind.Local).AddTicks(6413),
+                            CreateDate = new DateTime(2024, 2, 25, 20, 0, 42, 860, DateTimeKind.Local).AddTicks(8222),
                             Description = "Description for Product 10",
                             ImgUrl = "URL for Product 10 Image",
                             IsDeleted = false,
