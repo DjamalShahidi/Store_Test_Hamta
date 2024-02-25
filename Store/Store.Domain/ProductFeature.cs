@@ -2,14 +2,14 @@
 
 namespace Store.Domain
 {
-    public class ProductAttribute : BaseDomainEntity
+    public class ProductFeature : BaseDomainEntity
     {
-        public string Name { get; set; }
-
-        public Object Value { get; set; }
-
         public int ProductId { get; set; }
 
         public Product Product { get; set; }
+
+        public int AttributeId { get; set; }
+
+        public Feature Feature { get; set; }
     }
 }

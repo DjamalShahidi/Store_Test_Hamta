@@ -16,9 +16,9 @@ namespace Store.Domain
 
         public int ProductCategoryId { get; set; }
 
-        public ProductCategory ProductCategory { get; set; }
+        public Category ProductCategory { get; set; }
 
-        public List<ProductAttribute> Attributes { get; set; }
+        public List<ProductFeature> productFeatures { get; set; }
 
     }
 
