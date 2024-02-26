@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Store.Application.Mediatr.Feature.Requests.Commands;
 using Store.Application.Mediatr.Feature.Requests.Queries;
@@ -6,8 +7,13 @@ using Store.Application.Responses;
 
 namespace Store.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/VillaAPI")]
     [ApiController]
+    [ApiVersion("2.0")]
+    [ApiVersionNeutral]
+
+    //[Route("api/[controller]")]
+    //[ApiController]
     public class CategoryController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -17,7 +23,9 @@ namespace Store.Api.Controllers
             this._mediator = mediator;
         }
 
-        [HttpPost, Route("/Category")]
+        [HttpPost, Route("Category")]
+       // [ResponseCache(CacheProfileName = "Default30")]
+        [Authorize(Roles = "admin")]
         public async Task<Response> AddCategory([FromBody] AddCategory addCategory)
         {
             return await _mediator.Send(addCategory);
