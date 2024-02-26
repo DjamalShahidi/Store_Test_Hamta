@@ -35,7 +35,6 @@ namespace Store.Persistence
             return base.SaveChangesAsync(cancellationToken);
         }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-        public DbSet<User> User { get; set; }
         public DbSet<Feature> Features { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<CategoryFeature> CategoryFeatures { get; set; }
