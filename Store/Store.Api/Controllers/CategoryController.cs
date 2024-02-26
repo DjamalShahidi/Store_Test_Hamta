@@ -24,7 +24,6 @@ namespace Store.Api.Controllers
         }
 
         [HttpPost, Route("Category")]
-       // [ResponseCache(CacheProfileName = "Default30")]
         [Authorize(Roles = "admin")]
         public async Task<Response> AddCategory([FromBody] AddCategory addCategory)
         {
@@ -32,6 +31,8 @@ namespace Store.Api.Controllers
         }
 
         [HttpGet, Route("/Categories")]
+        [ResponseCache(CacheProfileName = "Default30")]
+        [Authorize]
         public async Task<Response> GetCategories()
         {
             return await _mediator.Send(new GetCategories());

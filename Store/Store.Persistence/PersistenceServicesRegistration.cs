@@ -1,15 +1,8 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 using Store.Application.Contracts.Persistence;
-using Store.Domain;
 using Store.Persistence.Repositories;
-using Store.Persistence.Services;
-using System.Text;
-using Microsoft.OpenApi.Models;
 
 namespace Store.Persistence
 {

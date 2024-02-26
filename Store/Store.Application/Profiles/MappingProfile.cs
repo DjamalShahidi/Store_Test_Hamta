@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Store.Application.DTOs.Account;
 using Store.Application.DTOs.Category;
 using Store.Application.DTOs.Feature;
 using Store.Application.DTOs.Product;
@@ -17,6 +18,12 @@ namespace Store.Application.Profiles
             CreateMap<AddProductDto, Product>().ReverseMap();
             CreateMap<GetCategoryDto, Category>().ReverseMap();
             CreateMap<GetProductDto, Product>().ReverseMap();
+            CreateMap<UserDTO, ApplicationUser>().ReverseMap();
+            CreateMap<LoginRequestDTO, ApplicationUser>().ReverseMap();
+            CreateMap<LoginResponseDTO, ApplicationUser>().ReverseMap();
+            CreateMap<RegisterationRequestDTO, ApplicationUser>().ReverseMap();
+
+
 
 
         }

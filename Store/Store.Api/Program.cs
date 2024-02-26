@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Store.Api;
 using Store.Application;
+using Store.Domain;
 using Store.Persistence;
 using System.Text;
 
@@ -14,6 +16,10 @@ var configuration = builder.Configuration;
 
 builder.Services.ConfigureApplicationServices()
                 .ConfigurePersistenceServices(configuration);
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<StoreDbContext>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 builder.Services.AddApiVersioning(options => {
     options.AssumeDefaultVersionWhenUnspecified = true;
     options.DefaultApiVersion = new ApiVersion(1, 0);
@@ -42,6 +48,16 @@ builder.Services.AddAuthentication(x =>
     });
 
 builder.Services.AddControllers();
+
+builder.Services.AddControllers(option =>
+{
+    option.CacheProfiles.Add("Default30",
+       new CacheProfile()
+       {
+           Duration = 30
+       });
+    //option.ReturnHttpNotAcceptable=true;
+});
 
 //builder.Services.AddControllers(option => {
 //    option.CacheProfiles.Add("Default30",

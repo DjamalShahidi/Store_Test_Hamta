@@ -1,19 +1,4 @@
-﻿using AutoMapper;
-using MediatR;
-using Microsoft.AspNet.Identity;
-using Store.Application.Contracts.Persistence;
-using Store.Application.DTOs.Account.Validators;
-using Store.Application.DTOs.Product.Validator;
-using Store.Application.Mediatr.Feature.Requests.Commands;
-using Store.Application.Responses;
-using Store.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Store.Application.Mediatr.Feature.Handlers.Commands
+﻿namespace Store.Application.Mediatr.Feature.Handlers.Commands
 {
     //public class LoginHandler : IRequestHandler<Login, Response>
     //{

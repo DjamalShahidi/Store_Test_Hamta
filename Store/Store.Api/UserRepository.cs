@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using Store.Application.DTOs.Account;
 using Store.Domain;
 using Store.Persistence;
 using System.IdentityModel.Tokens.Jwt;
@@ -101,7 +102,7 @@ namespace Store.Api
                         await _roleManager.CreateAsync(new IdentityRole("customer"));
                     }
                     await _userManager.AddToRoleAsync(user, "admin");
-                    var userToReturn = _db.User
+                    var userToReturn = _db.ApplicationUsers
                         .FirstOrDefault(u => u.UserName == registerationRequestDTO.UserName);
                     return _mapper.Map<UserDTO>(userToReturn);
 

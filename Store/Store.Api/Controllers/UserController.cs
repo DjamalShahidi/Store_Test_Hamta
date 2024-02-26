@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Store.Application.DTOs.Account;
 using Store.Application.Mediatr.Feature.Requests.Commands;
 using Store.Application.Mediatr.Feature.Requests.Queries;
 using Store.Application.Responses;

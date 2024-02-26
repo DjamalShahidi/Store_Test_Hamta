@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Store.Domain;
 using Store.Domain.Common;
@@ -14,6 +15,9 @@ namespace Store.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<IdentityUserLogin<string>>().HasKey(a=>a.UserId);
+            modelBuilder.Entity<IdentityUserRole<string>>().HasKey(a=>new {a.UserId,a.RoleId });
+            modelBuilder.Entity<IdentityUserToken<string>>().HasKey(a => a.UserId);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(StoreDbContext).Assembly);
         }
 
