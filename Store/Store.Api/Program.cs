@@ -1,24 +1,16 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Store.Api;
 using Store.Application;
 using Store.Domain;
 using Store.Persistence;
-using System.Text;
+using Store.Infrastructure;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
-
-builder.Services.ConfigureApplicationServices()
-                .ConfigurePersistenceServices(configuration);
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-    .AddEntityFrameworkStores<StoreDbContext>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddApiVersioning(options => {
     options.AssumeDefaultVersionWhenUnspecified = true;
@@ -27,27 +19,11 @@ builder.Services.AddApiVersioning(options => {
 });
 
 
-var key = configuration["JWT:Key"];
+builder.Services.ConfigureApplicationServices()
+                .ConfigurePersistenceServices(configuration)
+                .ConfigureInfrastructureServices(configuration);
 
 
-builder.Services.AddAuthentication(x =>
-{
-    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-    .AddJwtBearer(x => {
-        x.RequireHttpsMetadata = false;
-        x.SaveToken = true;
-        x.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key)),
-            ValidateIssuer = false,
-            ValidateAudience = false
-        };
-    });
-
-builder.Services.AddControllers();
 
 builder.Services.AddControllers(option =>
 {

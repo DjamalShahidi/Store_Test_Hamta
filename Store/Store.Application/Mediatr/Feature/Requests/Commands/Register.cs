@@ -4,8 +4,8 @@ using Store.Application.Responses;
 
 namespace Store.Application.Mediatr.Feature.Requests.Commands
 {
-    public class Login :IRequest<Response>
+    public class Register : IRequest<Response>
     {
-        public LoginRequestDto Request { get; set; }
+        public RegisterationRequestDto Request { get; set; }
     }
 }

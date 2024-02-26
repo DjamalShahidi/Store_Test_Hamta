@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Store.Application.JWT;
 using System.Reflection;
 
 namespace Store.Application
@@ -9,6 +10,7 @@ namespace Store.Application
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            services.AddScoped<JWTService>();
 
             return services;
         }

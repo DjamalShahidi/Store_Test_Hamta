@@ -18,10 +18,10 @@ namespace Store.Application.Profiles
             CreateMap<AddProductDto, Product>().ReverseMap();
             CreateMap<GetCategoryDto, Category>().ReverseMap();
             CreateMap<GetProductDto, Product>().ReverseMap();
-            CreateMap<UserDTO, ApplicationUser>().ReverseMap();
-            CreateMap<LoginRequestDTO, ApplicationUser>().ReverseMap();
-            CreateMap<LoginResponseDTO, ApplicationUser>().ReverseMap();
-            CreateMap<RegisterationRequestDTO, ApplicationUser>().ReverseMap();
+            CreateMap<UserDto, ApplicationUser>().ReverseMap();
+            CreateMap<LoginRequestDto, ApplicationUser>().ReverseMap();
+            //CreateMap<LoginResponseDTO, ApplicationUser>().ReverseMap();
+            //CreateMap<RegisterationRequestDTO, ApplicationUser>().ReverseMap();
 
 
 

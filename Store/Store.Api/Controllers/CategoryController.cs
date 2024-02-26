@@ -7,13 +7,11 @@ using Store.Application.Responses;
 
 namespace Store.Api.Controllers
 {
-    [Route("api/v{version:apiVersion}/VillaAPI")]
+    [Route("api/v{version:apiVersion}/Category")]
     [ApiController]
     [ApiVersion("2.0")]
     [ApiVersionNeutral]
 
-    //[Route("api/[controller]")]
-    //[ApiController]
     public class CategoryController : ControllerBase
     {
         private readonly IMediator _mediator;

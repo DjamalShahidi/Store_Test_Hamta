@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Storage;
 using Store.Application.Contracts.Persistence;
+using Store.Domain;
 
 namespace Store.Persistence.Repositories
 {
@@ -12,11 +14,18 @@ namespace Store.Persistence.Repositories
         private IFeaturesRepository _featuresRepository;
         private ICategoryFeatureRepository _categoryFeatureRepository;
         private IProductFeatureRepository _productFeatureRepository;
+        private IUserRepository _userRepository;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
 
-        public UnitOfWork(StoreDbContext context)
+        public UnitOfWork(StoreDbContext context, 
+                          UserManager<ApplicationUser> userManager=null,
+                          RoleManager<IdentityRole> roleManager=null)
         {
             this._context = context;
+            this._userManager = userManager;
+            this._roleManager = roleManager;
         }
 
         public IProductRepository ProductRepository => _productRepository ??= new ProductRepository(_context);
@@ -29,6 +38,7 @@ namespace Store.Persistence.Repositories
 
         public IProductFeatureRepository ProductFeatureRepository => _productFeatureRepository ??= new ProductFeaturesRepository(_context);
 
+        public IUserRepository UserRepository => _userRepository ??= new UserRepository(_context, _userManager, _roleManager);
 
         public void Dispose()
         {

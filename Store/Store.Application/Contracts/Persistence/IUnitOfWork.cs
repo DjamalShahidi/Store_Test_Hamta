@@ -12,6 +12,8 @@ namespace Store.Application.Contracts.Persistence
 
         IProductFeatureRepository ProductFeatureRepository { get; }
 
+        IUserRepository UserRepository { get; }
+
         IProductRepository ProductRepository { get; }
 
         Task Save(CancellationToken cancellationToken);
